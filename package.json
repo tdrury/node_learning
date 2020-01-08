@@ -1,0 +1,19 @@
+{
+    "name": "node_learning",
+    "version": "1.0.0",
+    "description": "test driven learning for nodejs and npm",
+    "main": "index.js",
+    "keywords": [],
+    "author": "Tim Drury",
+    "license": "MIT",
+    "devDependencies": {
+        "karma": "^4.4.1",
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-qunit": "^4.0.0",
+        "qunit": "^2.9.2"
+    },
+    "scripts": {
+        "test": "qunit",
+        "karma": "karma start"
+    }
+}
