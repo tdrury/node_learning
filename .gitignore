@@ -1,0 +1,27 @@
+#Eclipse project files
+.project
+.settings
+.classpath
+
+#Maven generated folders
+target/
+
+#NodeJS generated folders
+node/
+node_modules/
+bower_components/
+resources/
+
+Component-preload.js
+
+#Files generated during test execution
+coverage/
+.coverage/
+.sonar/
+.reports/
+*.log
+
+#IntelliJ IDEA project files
+.idea/
+*.iml
+
