@@ -18,3 +18,5 @@ QUnit.test("Basic Class", function (assert) {
     // then
     assert.equal(r.area, 20);
 });
+
+// TODO add linting task
