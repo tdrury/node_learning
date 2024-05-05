@@ -1,6 +1,5 @@
-QUnit.module("JSON Tests");
 
-QUnit.test("String as Array", function (assert) {
+test("String as Array", () => {
     // given
     const jsonText = '{ "books": [' +
         '{ "title": "Harry Potter 1", "author": "JK Rowling" },' +
@@ -12,6 +11,6 @@ QUnit.test("String as Array", function (assert) {
     let json = JSON.parse(jsonText);
 
     // then
-    assert.equal(json.books[1].title, 'Harry Potter 2')
+    expect(json.books[1].title).toBe( 'Harry Potter 2');
 });
 

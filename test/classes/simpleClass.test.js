@@ -1,6 +1,5 @@
-QUnit.module("Simple Class Tests");
 
-QUnit.test("Basic Class", function (assert) {
+test("Basic Class", () => {
     // given
     let Rectangle = class {
         constructor(height, width) {
@@ -16,7 +15,7 @@ QUnit.test("Basic Class", function (assert) {
     let r = new Rectangle(10, 2);
 
     // then
-    assert.equal(r.area, 20);
+    expect(r.area).toBe(20);
 });
 
 // TODO add linting task
