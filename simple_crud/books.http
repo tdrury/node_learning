@@ -1,0 +1,35 @@
+### hello world
+
+GET http://localhost:3000/ HTTP/1.1
+
+### get all books
+
+GET http://localhost:3000/books HTTP/1.1
+
+### get book by id
+
+GET http://localhost:3000/books/667dd2161eac989f3185b4ae HTTP/1.1
+
+### create book
+
+POST http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Et Tu Brutus?",
+    "author": "Caesar"
+}
+
+### update book
+
+PUT http://localhost:3000/books/667dd2161eac989f3185b4ae HTTP/1.1
+content-type: application/json
+
+{
+    "author": "Not Me"
+}
+
+### delete book
+
+DELETE http://localhost:3000/books/667dd2161eac989f3185b4ae HTTP/1.1
+content-type: application/json
