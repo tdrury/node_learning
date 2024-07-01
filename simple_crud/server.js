@@ -1,18 +1,32 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const joi = require('joi');
-const Book = require('./book');
+const helmet = require('helmet');
+require('dotenv').config();
+const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 
+const Book = require('./book');
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(helmet());
+app.use(cors());
 
 // run mongo via: docker run --name mongodb -p 27017:27017 -d mongo:latest
 mongoose.connect('mongodb://localhost:27017/book', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...', e));
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
+// -----------------------------------
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -21,14 +35,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
-// A temporary in-memory "database" until you integrate a real database
-// let books = [];
-// books[0] = {
-//     "id": 1,
-//     "title": "Hello World for Dummies",
-//     "author": "Me"
-// }
 
 // Create a Book
 app.post('/books', async (req, res) => {
