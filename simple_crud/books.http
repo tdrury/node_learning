@@ -20,12 +20,21 @@ content-type: application/json
     "author": "Caesar"
 }
 
-### update book
+### create book - ERROR
 
-PUT http://localhost:3000/books/667dd2161eac989f3185b4ae HTTP/1.1
+POST http://localhost:3000/books HTTP/1.1
 content-type: application/json
 
 {
+}
+
+### update book
+
+PUT http://localhost:3000/books/66830d3001c85d918484804a HTTP/1.1
+content-type: application/json
+
+{
+    "title": "I Didn't Do It",
     "author": "Not Me"
 }
 
