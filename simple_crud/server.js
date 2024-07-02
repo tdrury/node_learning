@@ -16,9 +16,9 @@ app.use(helmet());
 app.use(cors());
 
 // run mongo via: docker run --name mongodb -p 27017:27017 -d mongo:latest
-mongoose.connect('mongodb://localhost:27017/book', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...', e));
+mongoose.connect('mongodb://localhost:27017/book', {})
+    .then(() => console.log('Connected to MongoDB...'))
+    .catch(err => console.error('Could not connect to MongoDB...', e));
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+module.exports = app.listen(port, () => {
+    console.log("Server running at http://localhost:%d", port);
 });
 
 // Create a Book
@@ -82,10 +82,10 @@ app.delete('/books/:id', async (req, res) => {
 
 function validateBook(book) {
     const schema = joi.object({
-      title: joi.string().min(3).required(),
-      author: joi.string().min(3).required()
+        title: joi.string().min(3).required(),
+        author: joi.string().min(3).required()
     });
-  
+
     const { error } = schema.validate(book);
     if (error) {
         throw error;
